@@ -1,5 +1,10 @@
 root = exports ? this
 
+collectStar = (player, star) ->
+  console.log "Star hit"
+  star.kill()
+  return
+
 class Game
   constructor: ->
     @game = new Phaser.Game 800, 600, Phaser.AUTO, "",
@@ -16,7 +21,6 @@ class Game
   create: ->
     @game.physics.startSystem(Phaser.Physics.ARCADE)
     @game.add.sprite(0, 0, "sky")
-    @game.add.sprite(0, 0, "star")
     @platforms = @game.add.group()
     @platforms.enableBody = true
     ground = @platforms.create(0, @game.world.height - 64, "ground")
@@ -37,7 +41,35 @@ class Game
     @player.animations.add("left", [0, 1, 2, 3], 10, true)
     @player.animations.add("right", [5, 6, 7, 8], 10, true)
 
+    @stars = @game.add.group()
+    @stars.enableBody = true
+
+    for i in [0...12]
+      star = @stars.create(i * 70, 0, "star")
+      star.body.gravity.y = 60
+      star.body.bounce.y = 0.7 + Math.random() * 0.2
+    console.log @stars
+
   update: ->
     @game.physics.arcade.collide(@player, @platforms)
+    @game.physics.arcade.collide(@stars, @platforms)
+    @game.physics.arcade.overlap(@player, @stars, collectStar, null, @)
+    cursors = @game.input.keyboard.createCursorKeys()
+
+    @player.body.velocity.x = 0
+
+    if cursors.left.isDown
+      @player.body.velocity.x = -150
+      @player.animations.play("left")
+    else if cursors.right.isDown
+      @player.body.velocity.x = 150
+      @player.animations.play("right")
+    else
+      @player.animations.stop()
+      @player.frame = 4
+
+    if cursors.up.isDown && @player.body.touching.down
+      @player.body.velocity.y = -350
+    return
 
 game = new Game
