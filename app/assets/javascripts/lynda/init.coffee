@@ -5,4 +5,5 @@ window.onload = ->
   game.state.add("Boot", root.BunnyDefender.Boot)
   game.state.add("Preloader", root.BunnyDefender.Preloader)
   game.state.add("StartMenu", root.BunnyDefender.StartMenu)
+  game.state.add("Game", root.BunnyDefender.Game)
   game.state.start("Boot")

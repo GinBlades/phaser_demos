@@ -18,3 +18,4 @@ class root.BunnyDefender.StartMenu
 
   startGame: (pointer) ->
     @ding.play()
+    @state.start("Game")

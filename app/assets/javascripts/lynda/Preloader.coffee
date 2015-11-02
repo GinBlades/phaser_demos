@@ -16,6 +16,8 @@ class root.BunnyDefender.Preloader
     @titleText.anchor.setTo(0.5, 0.5)
     @load.image("titleScreen", "/lynda/images/TitleBG.png")
     @load.bitmapFont("eightbitwonder", "/lynda/fonts/eightbitwonder.png", "/lynda/fonts/eightbitwonder.fnt")
+    @load.image("hill", "/lynda/images/hill.png")
+    @load.image("sky", "/lynda/images/sky.png")
     @load.atlasXML("bunny", "/lynda/images/spritesheets/bunny.png", "/lynda/images/spritesheets/bunny.xml")
     @load.atlasXML("spaceRock", "/lynda/images/spritesheets/SpaceRock.png", "/lynda/images/spritesheets/SpaceRock.xml")
     @load.image("explosion", "/lynda/images/explosion.png")
