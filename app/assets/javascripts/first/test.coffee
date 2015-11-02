@@ -1,15 +1,9 @@
 root = exports ? this
 
 class Game
-  constructor: ->
+  constructor: (@game) ->
     @score = 0
     @scoreText = null
-    @game = new Phaser.Game 800, 600, Phaser.AUTO, "",
-      score: @score
-      preload: @preload
-      create: @create
-      update: @update
-      collectStar: @collectStar
 
   preload: ->
     @game.load.image("sky", "first/sky.png")
@@ -82,3 +76,4 @@ class Game
     return
 
 game = new Game
+phaserGame = new Phaser.Game 800, 600, Phaser.AUTO, "", game
