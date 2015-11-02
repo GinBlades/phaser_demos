@@ -13,8 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
-//= require_tree .
-
-$(document).ready(initialize);
-$(document).on('page:load', initialize);

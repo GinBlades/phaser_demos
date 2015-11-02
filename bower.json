@@ -1,0 +1,21 @@
+{
+  "name": "phaser_demos",
+  "homepage": "https://github.com/GinBlades/phaser_demos",
+  "authors": [
+    "Shaun Martin <webmaster@ginblades.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.4.4"
+  }
+}

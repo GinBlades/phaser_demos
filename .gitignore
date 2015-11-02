@@ -10,3 +10,4 @@
 /config/database.yml
 /config/secrets.yml
 
+/vendor/assets
