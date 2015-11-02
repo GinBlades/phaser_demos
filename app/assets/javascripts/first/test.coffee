@@ -1,23 +1,15 @@
 root = exports ? this
 
-class Utilities
-  constructor: (@game) ->
-
-  collectStar: (player, star) ->
-    star.kill()
-    @game.score += 10
-    @game.scoreText.text = "Score: " + score
-    return
-
 class Game
   constructor: ->
     @score = 0
     @scoreText = null
-    @utilities = new Utilities(@)
     @game = new Phaser.Game 800, 600, Phaser.AUTO, "",
+      score: @score
       preload: @preload
       create: @create
       update: @update
+      collectStar: @collectStar
 
   preload: ->
     @game.load.image("sky", "first/sky.png")
@@ -60,10 +52,17 @@ class Game
       star.body.gravity.y = 60
       star.body.bounce.y = 0.7 + Math.random() * 0.2
 
+  collectStar: (player, star) ->
+    star.kill()
+    @score += 10
+    @scoreText.text = "Score: " + @score
+    return
+
   update: ->
+    console.log @score
     @game.physics.arcade.collide(@player, @platforms)
     @game.physics.arcade.collide(@stars, @platforms)
-    @game.physics.arcade.overlap(@player, @stars, @utilities.collectStar, null, @)
+    @game.physics.arcade.overlap(@player, @stars, @collectStar, null, @)
     cursors = @game.input.keyboard.createCursorKeys()
 
     @player.body.velocity.x = 0
