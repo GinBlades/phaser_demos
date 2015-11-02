@@ -31,3 +31,4 @@ class root.BunnyDefender.Preloader
   update: ->
     if @cache.isSoundDecoded("game_audio") && @ready == false
       @ready = true
+      @state.start("StartMenu")
