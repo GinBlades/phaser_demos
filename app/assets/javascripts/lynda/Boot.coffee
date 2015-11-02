@@ -22,6 +22,5 @@ class root.BunnyDefender.Boot
 
     @input.addPointer()
     @stage.backgroundColor = "#171642"
-
     @state.start("Preloader")
     return

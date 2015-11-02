@@ -1,7 +1,7 @@
 root = exports ? this
 root.BunnyDefender = root.BunnyDefender ? {}
 
-class root.BunnyDefender.Boot
+class root.BunnyDefender.Preloader
   constructor: (@game) ->
     @preloadBar = null
     @titleText = null
