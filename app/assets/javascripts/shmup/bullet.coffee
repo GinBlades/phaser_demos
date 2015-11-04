@@ -2,6 +2,7 @@ root = exports ? this
 
 class root.Bullet extends Phaser.Sprite
   constructor: (game, key) ->
+    # key refers to the image or texture used by the Sprite during rendering
     Phaser.Sprite.call(@, game, 0, 0, key)
     @texture.baseTexture.scaleMode = PIXI.scaleModes.NEAREST
     @anchor.set(0.5)
